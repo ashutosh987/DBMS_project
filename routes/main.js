@@ -1,7 +1,9 @@
 const express=require("express");
 const router=express();
 const myconnection=require("./connection");
-
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var path = require('path');
 
 router.get("/",(req,res)=>{
 
@@ -23,4 +25,28 @@ router.get("/",(req,res)=>{
 
 
 });
+router.get("/login",(req,res)=>{
+res.render("login")
+});
+router.post('/login', function(request, response) {
+	var username = request.body.username;
+	var password = request.body.password;
+	if (username && password) {
+		myconnection.query('SELECT * FROM agent WHERE agent_name = ? AND pass_word = ?', [username, password], function(error, results, fields) {
+			if (results.length > 0) {
+				request.session.loggedin = true;
+				request.session.username = username;
+				response.redirect('/');
+			} else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
+
+
 module.exports=router;
