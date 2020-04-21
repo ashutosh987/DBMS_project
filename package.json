@@ -1,0 +1,38 @@
+{
+  "name": "dbms_project",
+  "version": "1.0.0",
+  "description": "for mysql database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashutosh987/DBMS_project.git"
+  },
+  "author": "alok and ashutosh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashutosh987/DBMS_project/issues"
+  },
+  "homepage": "https://github.com/ashutosh987/DBMS_project#readme",
+  "dependencies": {
+    "async": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "connection": "^1.1.0",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "http-errors": "^1.7.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4"
+  }
+}
