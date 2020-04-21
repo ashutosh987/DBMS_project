@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/ashutosh987/DBMS_project#readme",
   "dependencies": {
-    "acorn": "^7.1.1",
     "async": "^3.2.0",
     "body-parser": "^1.19.0",
     "connection": "^1.1.0",
@@ -36,4 +35,5 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.4"
   }
+
 }
