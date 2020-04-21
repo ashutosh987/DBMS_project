@@ -9,6 +9,7 @@ router.get("/",(req,res)=>{
 
     var prop_id="";
     var state="";
+  console.log(req.session.username);
 
     myconnection.query('SELECT * FROM property',function (error,results) {
         prop_id=results[0].prop_id;
