@@ -5,7 +5,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-router.get("/:id/profile",(req,res)=>{
+router.get("/:id/profile",isLoggedIn,(req,res)=>{
 	var sql="(SELECT a.agent_id,a.agent_name,p.prop_id,p.state,p.htype,bu.buyer_name,p.street FROM agent a,buy b,buyer bu,property p where a.agent_id=? and b.agent_id=a.agent_id and b.buyer_id=bu.buyer_id and bu.prop_id=p.prop_id) UNION "+
 	"(SELECT a.agent_id,a.agent_name,p.prop_id,p.state,p.htype,bu.buyer_name,p.street FROM agent a,rent r,buyer bu,property p where a.agent_id=? and r.agent_id=a.agent_id and r.buyer_id=bu.buyer_id and bu.prop_id=p.prop_id);";
 	myconnection.query(sql,[req.params.id,req.params.id],function (error,agents) {
@@ -18,11 +18,11 @@ router.get("/:id/profile",(req,res)=>{
 	});
 	});
 	
-	router.get("/:id/add",(req,res)=>{
+	router.get("/:id/add",isLoggedIn,(req,res)=>{
 		res.render("add",{agent_id:req.params.id});
 		});
 
-router.post("/:id/add",(req,res)=>{
+router.post("/:id/add",isLoggedIn,(req,res)=>{
 		var agent_id=req.params.id;
 		var prop_id=req.body.prop_id;
 		var type=req.body.type;
@@ -54,5 +54,11 @@ router.post("/:id/add",(req,res)=>{
 		}
 	});
 
-
+//middleware authentication
+function isLoggedIn(req,res,next){
+    if(req.session.user_id == req.params.id){
+        return  next();
+    }
+    res.redirect("/login");
+}
 module.exports=router;

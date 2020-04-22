@@ -37,6 +37,7 @@ router.post('/login', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
+				request.session.user_id= results[0].agent_id;
 				response.redirect('/agent/'+results[0].agent_id+'/profile');
 				
 			} else {
