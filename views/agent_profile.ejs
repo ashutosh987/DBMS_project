@@ -1,0 +1,13 @@
+
+name :<%=agent[0].agent_name%> 
+<% for(var i=0;i< agent.length ;i++){%>
+    <h1> <%= agent[i].prop_id %>
+    <%= agent[i].street %>
+    <%= agent[i].buyer_name %>
+    <%= agent[i].state %>
+    <%= agent[i].htype %>
+         </h1>
+<%}%>
+
+<a href="/agent/<%=agent[0].agent_id%>/add">add new property</a>
+

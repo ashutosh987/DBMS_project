@@ -37,7 +37,8 @@ router.post('/login', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
-				response.redirect('/');
+				response.redirect('/agent/'+results[0].agent_id+'/profile');
+				
 			} else {
 				response.send('Incorrect Username and/or Password!');
 			}			
@@ -48,6 +49,5 @@ router.post('/login', function(request, response) {
 		response.end();
 	}
 });
-
 
 module.exports=router;
