@@ -6,11 +6,13 @@ var bodyParser = require('body-parser');
 var path = require('path');
 
 router.get("/:id/profile",(req,res)=>{
+
 	var sql="(SELECT a.agent_id,a.agent_name,p.prop_id,p.state,p.htype,bu.buyer_name,p.street FROM agent a,buy b,buyer bu,property p where a.agent_id=? and b.agent_id=a.agent_id and b.buyer_id=bu.buyer_id and bu.prop_id=p.prop_id) UNION "+
 	"(SELECT a.agent_id,a.agent_name,p.prop_id,p.state,p.htype,bu.buyer_name,p.street FROM agent a,rent r,buyer bu,property p where a.agent_id=? and r.agent_id=a.agent_id and r.buyer_id=bu.buyer_id and bu.prop_id=p.prop_id);";
 	myconnection.query(sql,[req.params.id,req.params.id],function (error,agents) {
 		if (agents) {		
 		res.render("agent_profile",{agent:agents});
+		
 		}
 		else{
 			res.send('nothing for you');
@@ -53,6 +55,32 @@ router.post("/:id/add",(req,res)=>{
 			});	
 		}
 	});
+	
+
+	router.get("/:id/rent",(req,res)=>{
+
+		myconnection.query('SELECT * from rent where agent_id=?',[req.params.id],function (error,results) {
+			if(results)	{	
+			res.render('rent',{results:results});
+			}
+			else{
+				res.send('nothing for you');
+			} 
+		});	
+		});
+		router.get("/:id/sold",(req,res)=>{
+
+			myconnection.query('SELECT * from buy where agent_id=?',[req.params.id],function (error,results) {
+				if(results)	{	
+				res.render('rent',{results:results});
+				}
+				else{
+					res.send('nothing for you');
+				} 
+			});	
+			});
+
+
 
 
 module.exports=router;

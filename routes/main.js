@@ -36,7 +36,8 @@ router.post('/login', function(request, response) {
 		myconnection.query('SELECT * FROM agent WHERE agent_name = ? AND pass_word = ?', [username, password], function(error, results, fields) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
-				request.session.username = username;
+                request.session.username = username;
+                
 				response.redirect('/agent/'+results[0].agent_id+'/profile');
 				
 			} else {

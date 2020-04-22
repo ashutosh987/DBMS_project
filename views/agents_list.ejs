@@ -1,0 +1,11 @@
+
+
+
+
+<% for(var i=0;i< agent.length ;i++){%>
+    <h1> 
+    <%= agent[i].agent_name %>
+    <a href="/agent/<%=agent[i].agent_id%>/rent"><button>rent details</button> </a>
+        <a href="/agent/<%=agent[i].agent_id%>/sold"> <button>sold details</button></a>
+         </h1>
+<%}%>
