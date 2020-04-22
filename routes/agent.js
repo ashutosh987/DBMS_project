@@ -56,9 +56,9 @@ router.post("/:id/add",isLoggedIn,(req,res)=>{
 	});
 	
 
-	router.get("/:id/rent",(req,res)=>{
+router.get("/:id/rent",(req,res)=>{
 
-		myconnection.query('SELECT * from rent where agent_id=?',[req.params.id],function (error,results) {
+		myconnection.query('SELECT * FROM rent , buyer, property where rent.agent_id=? and buyer.buyer_id=rent.buyer_id and property.prop_id=buyer.prop_id',[req.params.id],function (error,results) {
 			if(results)	{	
 			res.render('rent',{results:results});
 			}
@@ -67,11 +67,13 @@ router.post("/:id/add",isLoggedIn,(req,res)=>{
 			} 
 		});	
 		});
-		router.get("/:id/sold",(req,res)=>{
+router.get("/:id/sold",(req,res)=>{
 
-			myconnection.query('SELECT * from buy where agent_id=?',[req.params.id],function (error,results) {
+			myconnection.query('SELECT * FROM buy , buyer, property where buy.agent_id=? and buyer.buyer_id=buy.buyer_id and property.prop_id=buyer.prop_id'
+			,[req.params.id],
+			function (error,results) {
 				if(results)	{	
-				res.render('rent',{results:results});
+				res.render('sold',{results:results});
 				}
 				else{
 					res.send('nothing for you');
