@@ -29,6 +29,12 @@ router.get("/",(req,res)=>{
 router.get("/login",(req,res)=>{
 res.render("login")
 });
+router.get("/logout",(req,res)=>{
+
+req.session.loggedin=false;
+res.redirect("/login");
+	
+})
 router.post('/login', function(request, response) {
 	var username = request.body.username;
 	var password = request.body.password;
@@ -50,5 +56,16 @@ router.post('/login', function(request, response) {
 		response.end();
 	}
 });
+router.post('/login_as_real_estates', function(request, response) {
 
+
+	if(request.body.password==='12345'){
+		response.redirect('/real_estates');
+	}
+	else{
+		response.send('Incorrect  Password!');
+	}
+
+
+})
 module.exports=router;
