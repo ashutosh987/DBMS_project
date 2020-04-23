@@ -1,27 +1,30 @@
+<div style="background-color: darkorange;">
 <% for(var i=0;i< results.length ;i++){%>
-    <p><%=i+1%> Result</p>
+    <div style="padding: 5em; margin-left: 10em; margin-right:10em ; background-color: antiquewhite;">
+    <p> Result : <%=i+1%></p>
     <h1> 
-        buyer name
+    >buyer name :
     <%= results[i].buyer_name %></h1><h1>
-    buying date
+    >buying date :
     <%= results[i].buying_date%></h1><h1>
-       duration
+       >duration :
         <%= results[i].duration_in_yrs%></h1><h1>
     property details
-    state
+    >state : 
     <%= results[i].state %></h1><h1>
-    city
+    >city :
     <%= results[i].city %></h1><h1>
-    street
+    >street :
     <%= results[i].street %></h1><h1>
-    size_sq_ft
+    >size_sq_ft :
     <%= results[i].size_sq_ft %></h1><h1>
-    no_of_beds
+    >no_of_beds :
     <%= results[i].no_of_beds%></h1><h1>
-    floor_no
+    >floor_no :
     <%= results[i].floor_no%></h1><h1>
-    price
+    >price :
     <%= results[i].price%></h1>
-  
+</div>
       
 <%}%>
+</div>
