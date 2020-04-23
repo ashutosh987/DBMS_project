@@ -1,6 +1,15 @@
 
 
 
+<form action="/real_estates/search" method="POST">
+    <label>Search by city</label>
+    <input name="city" placeholder="address" type="text">
+    <lable>Search by Amount</lable>
+    <input name="amount1" placeholder="from" type="number">
+    <label>to</label>
+    <input name="amount2" placeholder="to" type="number">
+    <button  type="submit">Search</button>
+    </form>
 
 <% for(var i=0;i< agent.length ;i++){%>
     <h1> 
