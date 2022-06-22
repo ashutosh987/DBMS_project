@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ashutosh987/DBMS_project#readme",
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "body-parser": "^1.19.0",
     "connection": "^1.1.0",
     "cookie-parser": "^1.4.5",
